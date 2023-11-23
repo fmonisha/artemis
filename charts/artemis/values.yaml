@@ -2,8 +2,8 @@ replicaCount: 1
 
 image:
 ## repository and image tag are required
-#  repository: some/image
-#  tag: 2.17.0
+   repository: artifactory.pfizer.com/iiot-docker-dev/activemq-artemis
+   tag: 2.31.0
   pullPolicy: IfNotPresent
   pullSecrets: []
 
@@ -47,7 +47,7 @@ metrics:
     ## metrics.serviceMonitor.enabled if `true` and metrics.enabled `true` then deploy service monitor
     enabled: false
     ## metrics.serviceMonitor.namespace namespace where serviceMonitor is deployed
-    namespace: monitoring
+    namespace: artemis-dev-ha
     ## metrics.serviceMonitor.path Prometheus scraping path
     path: /metrics
     ## metrics.serviceMonitor.interval Prometheus scraping interval
@@ -73,7 +73,7 @@ clustering:
 
 ha:
   ## ha.enabled if `true` a second stateful set running backups will be installed
-  enabled: false
+  enabled: true
   ## ha.live settings for live servers. Key, values are automatically expanded
   live: {}
   ## ha.backup settings for backup servers. Key, values are automatically expanded
